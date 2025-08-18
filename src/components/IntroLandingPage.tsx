@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import SplitScreenHero from './SplitScreenHero';
+import StructuredData from './StructuredData';
 
 // 3D Rotate Intro Component
 function Intro3DRotate({ onComplete }: { onComplete: () => void }) {
@@ -34,6 +35,8 @@ function Intro3DRotate({ onComplete }: { onComplete: () => void }) {
             width={140}
             height={140}
             className="mx-auto"
+            priority
+            quality={90}
           />
         </motion.div>
         <motion.h1
@@ -86,6 +89,7 @@ export default function IntroLandingPage() {
 
   return (
     <>
+      <StructuredData />
       {/* Main Landing Page Content */}
       <SplitScreenHero />
 

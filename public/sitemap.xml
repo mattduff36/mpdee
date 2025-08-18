@@ -2,14 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://mpdee.co.uk/</loc>
-    <lastmod>2024-03-19</lastmod>
+    <lastmod>2025-01-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://mpdee.co.uk/downloads.html</loc>
-    <lastmod>2024-03-19</lastmod>
+    <loc>https://creative.mpdee.co.uk/</loc>
+    <lastmod>2025-01-26</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://development.mpdee.co.uk/</loc>
+    <lastmod>2025-01-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://support.mpdee.co.uk/</loc>
+    <lastmod>2025-01-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
 </urlset> 

@@ -1,18 +1,61 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Image optimization
   images: {
-    domains: [],
+    formats: ['image/webp', 'image/avif'],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    minimumCacheTTL: 31536000, // 1 year
+    dangerouslyAllowSVG: false,
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
-  // Ensure proper handling of environment variables
-  env: {
-    CUSTOM_KEY: process.env.CUSTOM_KEY,
+
+  // Performance optimizations
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
   },
-  // Configure for Vercel deployment
-  serverExternalPackages: ['nodemailer'],
-  // Handle trailing slashes for better routing
+
+  // Bundle analyzer
+  experimental: {
+    optimizePackageImports: ['framer-motion'],
+    webVitalsAttribution: ['CLS', 'LCP'],
+  },
+
+  // Security headers
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'X-Frame-Options',
+            value: 'DENY',
+          },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'strict-origin-when-cross-origin',
+          },
+          {
+            key: 'Permissions-Policy',
+            value: 'camera=(), microphone=(), geolocation=()',
+          },
+        ],
+      },
+    ];
+  },
+
+  // Handle trailing slashes for better SEO
   trailingSlash: false,
-  // Ensure proper static generation
-  output: 'standalone',
+
+  // Static generation for better performance
+  // output: 'export', // Disabled because we need server functions for headers
+
+  // Enable gzip compression
+  compress: true,
 };
 
 module.exports = nextConfig;
