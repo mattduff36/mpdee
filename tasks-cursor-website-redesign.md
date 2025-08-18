@@ -85,7 +85,7 @@
     - [x] 7.1.3 Add specific meta title and description for Services page ("Services | MPDEE")
   - [x] 7.2 Implement semantic HTML5 structure throughout
     - [x] 7.2.1 Review and improve semantic HTML5 structure in Layout component
-    - [x] 7.2.2 Ensure proper semantic structure in Hero component  
+    - [x] 7.2.2 Ensure proper semantic structure in Hero component
     - [x] 7.2.3 Ensure proper semantic structure in Services component
     - [x] 7.2.4 Ensure proper semantic structure in Portfolio component
     - [x] 7.2.5 Ensure proper semantic structure in Contact component

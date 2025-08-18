@@ -15,7 +15,7 @@ Revamp the "Website" services section to provide clearer differentiation between
 
 ## 3. User Stories
 
-*Note: User stories will be added in a future update.*
+_Note: User stories will be added in a future update._
 
 ## 4. Functional Requirements
 
@@ -82,4 +82,4 @@ Revamp the "Website" services section to provide clearer differentiation between
 
 ## 9. Open Questions
 
-- User stories and side-by-side comparison feature to be added in a future update. 
+- User stories and side-by-side comparison feature to be added in a future update.

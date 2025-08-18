@@ -29,29 +29,33 @@ A modern, responsive website built with Next.js, TypeScript, and Tailwind CSS.
 
 ### Prerequisites
 
-- Node.js 18+ 
+- Node.js 18+
 - npm or yarn
 - Gmail account for contact form
 
 ### Installation
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/mattduff36/mpdee.git
 cd mpdee
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
 
 3. Set up environment variables:
+
 ```bash
 cp env.example .env.local
 ```
 
 4. Configure your Gmail SMTP settings in `.env.local`:
+
 ```env
 SMTP_USER=your-email@gmail.com
 SMTP_PASS=your-gmail-app-password
@@ -60,6 +64,7 @@ NEXT_PUBLIC_SITE_URL=http://localhost:3000
 ```
 
 5. Run the development server:
+
 ```bash
 npm run dev
 ```

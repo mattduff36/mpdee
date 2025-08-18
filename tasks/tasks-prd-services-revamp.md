@@ -1,6 +1,6 @@
 # Task List: Revamp Website Service Packages
 
-*Generated from: `prd-services-revamp.md`*
+_Generated from: `prd-services-revamp.md`_
 
 ## Relevant Files
 

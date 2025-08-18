@@ -1,0 +1,59 @@
+You want a parent landing page that introduces MPDEE and funnels people to one of three areas: Creative, Development, Support. Since it’s for an IT company, the page should feel clean, tech-driven, and a little playful without being overcomplicated. Here are options:
+
+1. Interactive Logo Hub
+
+Place the MPDEE logo in the center.
+
+Each of the three divisions orbit around it (Creative, Development, Support).
+
+Hovering highlights one with a short tagline and a smooth animation (e.g., glow, rotation, particle burst).
+
+Clicking takes the visitor to that division’s website.
+
+2. Split-Screen Intro
+
+Landing page divided into three animated panels.
+
+Each panel uses a distinct motion/visual identity:
+
+Creative: soundwaves, equalizer animation, pulsing neon.
+
+Development: code lines typing effect, circuit board animation.
+
+Support: clean diagnostic/connection animation (loading bar, nodes connecting).
+
+Hover expands the panel slightly; click zooms into the chosen section.
+
+3. Animated Scene
+
+A futuristic control room/dashboard with three glowing “terminals.”
+
+Visitors “choose a terminal” (Creative, Development, Support).
+
+On hover, animations run (music visualizer for Creative, lines of code compiling for Development, gears/spinning tools for Support).
+
+This creates a “choose your path” vibe.
+
+4. Minimalist with Motion
+
+Use large text: “What are you here for?”
+
+Three animated buttons fade in one after the other with subtle micro-interactions (hover effects, bounce, gradient shifts).
+
+Keeps it clean and fast-loading but still engaging.
+
+5. 3D/Parallax World
+
+Build a 3D parallax environment where users scroll or move their mouse to “navigate” toward a choice.
+
+Example: MPDEE logo in center, each division floating in space with icons (headphones for Creative, brackets for Development, wrench for Support).
+
+Move the mouse → perspective shifts like a holographic interface.
+
+6. Audio-Driven Landing
+
+Since one area is audio, have the landing page react to ambient sound/beat animation.
+
+A looping background track drives subtle waveforms that morph into three selectable icons.
+
+Gives a strong Creative identity while still linking to IT.
