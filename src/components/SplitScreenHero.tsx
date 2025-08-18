@@ -89,13 +89,12 @@ export default function SplitScreenHero() {
             onClick={() => window.open(area.url, '_blank')}
             style={{ willChange: 'flex' }}
           >
-
-
             {/* Content */}
             <motion.div
               className={`relative z-10 h-full p-4 py-6 lg:p-8 lg:py-12 flex flex-col justify-center items-center ${area.textColor}`}
               animate={{
-                scale: hoveredPanel !== null && hoveredPanel !== index ? 0.96 : 1,
+                scale:
+                  hoveredPanel !== null && hoveredPanel !== index ? 0.96 : 1,
               }}
               transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
             >
@@ -104,28 +103,29 @@ export default function SplitScreenHero() {
                 <motion.div
                   className="mb-6"
                   animate={{
-                    scale: hoveredPanel !== null && hoveredPanel !== index ? 0.8 : 1,
+                    scale:
+                      hoveredPanel !== null && hoveredPanel !== index ? 0.8 : 1,
                   }}
                   transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
-                  style={{ 
+                  style={{
                     fontSize: '4rem',
                     lineHeight: 1,
-                    willChange: 'transform'
+                    willChange: 'transform',
                   }}
                 >
                   {area.icon}
                 </motion.div>
-                
+
                 {/* Title with unified scaling */}
                 <motion.h2
                   className={`font-bold mb-3 mt-2 lg:mb-6 lg:mt-4 framer-motion-title ${
-                    area.title === 'Creative' 
-                      ? 'text-gray-900' 
+                    area.title === 'Creative'
+                      ? 'text-gray-900'
                       : area.title === 'Development'
-                      ? 'text-white'
-                      : 'text-gray-900'
+                        ? 'text-white'
+                        : 'text-gray-900'
                   }`}
-                  style={{ 
+                  style={{
                     fontSize: '2rem',
                     lineHeight: 1.1,
                     whiteSpace: 'nowrap',
@@ -137,46 +137,56 @@ export default function SplitScreenHero() {
                     WebkitFontSmoothing: 'antialiased',
                     MozOsxFontSmoothing: 'grayscale',
                     textRendering: 'optimizeLegibility',
-                    transition: 'none'
+                    transition: 'none',
                   }}
                   animate={{
-                    scale: hoveredPanel !== null && hoveredPanel !== index 
-                      ? 0.75 
-                      : hoveredPanel === index 
-                      ? 1.2 
-                      : 1,
+                    scale:
+                      hoveredPanel !== null && hoveredPanel !== index
+                        ? 0.75
+                        : hoveredPanel === index
+                          ? 1.2
+                          : 1,
                   }}
-                  transition={{ 
-                    duration: 0.5, 
+                  transition={{
+                    duration: 0.5,
                     ease: [0.4, 0, 0.2, 1],
-                    type: 'tween'
+                    type: 'tween',
                   }}
-                  transformTemplate={({ scale }) => `translate3d(0,0,0) scale(${scale})`}
+                  transformTemplate={({ scale }) =>
+                    `translate3d(0,0,0) scale(${scale})`
+                  }
                 >
-                  MPDEE <span className={`${
-                    area.title === 'Creative' 
-                      ? 'bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent'
-                      : area.title === 'Development'
-                      ? 'bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent'
-                      : 'bg-gradient-to-r from-red-500 to-blue-600 bg-clip-text text-transparent'
-                  }`}>{area.title}</span>
+                  MPDEE{' '}
+                  <span
+                    className={`${
+                      area.title === 'Creative'
+                        ? 'bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent'
+                        : area.title === 'Development'
+                          ? 'bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent'
+                          : 'bg-gradient-to-r from-red-500 to-blue-600 bg-clip-text text-transparent'
+                    }`}
+                  >
+                    {area.title}
+                  </span>
                 </motion.h2>
-                
+
                 {/* Description with opacity and scale */}
                 <motion.p
                   className={`mb-4 lg:mb-8 max-w-md mx-auto leading-relaxed ${
                     area.title === 'Creative'
                       ? 'text-base lg:text-lg text-gray-800'
                       : area.title === 'Development'
-                      ? 'text-base lg:text-lg text-white'
-                      : 'text-base lg:text-lg text-gray-900'
+                        ? 'text-base lg:text-lg text-white'
+                        : 'text-base lg:text-lg text-gray-900'
                   }`}
                   style={{
-                    willChange: 'transform, opacity'
+                    willChange: 'transform, opacity',
                   }}
                   animate={{
-                    opacity: hoveredPanel !== null && hoveredPanel !== index ? 0.7 : 1,
-                    scale: hoveredPanel !== null && hoveredPanel !== index ? 0.9 : 1,
+                    opacity:
+                      hoveredPanel !== null && hoveredPanel !== index ? 0.7 : 1,
+                    scale:
+                      hoveredPanel !== null && hoveredPanel !== index ? 0.9 : 1,
                   }}
                   transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
                 >
@@ -188,12 +198,14 @@ export default function SplitScreenHero() {
                   className="space-y-2 hidden lg:block"
                   style={{ willChange: 'transform, opacity' }}
                   animate={{
-                    opacity: hoveredPanel !== null && hoveredPanel !== index ? 0.6 : 1,
-                    scale: hoveredPanel !== null && hoveredPanel !== index ? 0.9 : 1,
+                    opacity:
+                      hoveredPanel !== null && hoveredPanel !== index ? 0.6 : 1,
+                    scale:
+                      hoveredPanel !== null && hoveredPanel !== index ? 0.9 : 1,
                   }}
                   transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
                 >
-                  {area.features.map((feature, featureIndex) => (
+                  {area.features.map(feature => (
                     <div
                       key={feature}
                       className="flex items-center justify-center text-sm opacity-80"
@@ -210,7 +222,8 @@ export default function SplitScreenHero() {
                   className="mt-8 hidden lg:block"
                   style={{ willChange: 'transform' }}
                   animate={{
-                    scale: hoveredPanel !== null && hoveredPanel !== index ? 0.9 : 1,
+                    scale:
+                      hoveredPanel !== null && hoveredPanel !== index ? 0.9 : 1,
                   }}
                   transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
                 >
@@ -228,8 +241,9 @@ export default function SplitScreenHero() {
                     ${hoveredPanel === index ? 'shadow-lg' : ''}
                   `}
                     style={{
-                      transform: hoveredPanel === index ? 'scale(1.05)' : 'scale(1)',
-                      willChange: 'transform'
+                      transform:
+                        hoveredPanel === index ? 'scale(1.05)' : 'scale(1)',
+                      willChange: 'transform',
                     }}
                   >
                     Enter
@@ -253,10 +267,6 @@ export default function SplitScreenHero() {
           </motion.div>
         ))}
       </main>
-
-      
     </div>
   );
 }
-
-

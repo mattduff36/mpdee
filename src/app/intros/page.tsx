@@ -155,7 +155,7 @@ function ParticleBurstIntro({ onComplete }: { onComplete: () => void }) {
           }}
         />
       ))}
-      
+
       <div className="text-center relative z-10">
         <motion.div
           initial={{ scale: 0, rotate: -180 }}
@@ -185,9 +185,15 @@ function ParticleBurstIntro({ onComplete }: { onComplete: () => void }) {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 1, delay: 1.5 }}
         >
-          <span className="px-4 py-2 bg-blue-600 text-white rounded-full text-sm">Creative</span>
-          <span className="px-4 py-2 bg-purple-600 text-white rounded-full text-sm">Development</span>
-          <span className="px-4 py-2 bg-pink-600 text-white rounded-full text-sm">Support</span>
+          <span className="px-4 py-2 bg-blue-600 text-white rounded-full text-sm">
+            Creative
+          </span>
+          <span className="px-4 py-2 bg-purple-600 text-white rounded-full text-sm">
+            Development
+          </span>
+          <span className="px-4 py-2 bg-pink-600 text-white rounded-full text-sm">
+            Support
+          </span>
         </motion.div>
       </div>
     </motion.div>
@@ -234,7 +240,7 @@ function MorphingShapesIntro({ onComplete }: { onComplete: () => void }) {
             ease: 'easeInOut',
           }}
         />
-        
+
         <motion.div
           initial={{ scale: 0.5, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
@@ -277,7 +283,7 @@ function GlitchIntro({ onComplete }: { onComplete: () => void }) {
   useEffect(() => {
     const glitchTimer = setTimeout(() => setGlitchActive(true), 1500);
     const completeTimer = setTimeout(onComplete, 4000);
-    
+
     return () => {
       clearTimeout(glitchTimer);
       clearTimeout(completeTimer);
@@ -324,7 +330,7 @@ function GlitchIntro({ onComplete }: { onComplete: () => void }) {
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1 }}
         >
-          {'> Initializing systems...'}
+          {`> Initializing systems...`}
         </motion.p>
         <motion.p
           className="text-green-400 font-mono text-sm mt-2"
@@ -332,7 +338,7 @@ function GlitchIntro({ onComplete }: { onComplete: () => void }) {
           animate={{ opacity: glitchActive ? 1 : 0 }}
           transition={{ duration: 0.5 }}
         >
-          {'> Systems online'}
+          {`> Systems online`}
         </motion.p>
       </div>
     </motion.div>
@@ -441,9 +447,15 @@ function Rotate3DIntro({ onComplete }: { onComplete: () => void }) {
           animate={{ rotateY: 0, opacity: 1 }}
           transition={{ duration: 1.5, delay: 1, ease: [0.23, 1, 0.32, 1] }}
         >
-          <span className="px-4 py-2 bg-blue-600 text-white rounded-full text-sm">Creative</span>
-          <span className="px-4 py-2 bg-purple-600 text-white rounded-full text-sm">Development</span>
-          <span className="px-4 py-2 bg-pink-600 text-white rounded-full text-sm">Support</span>
+          <span className="px-4 py-2 bg-blue-600 text-white rounded-full text-sm">
+            Creative
+          </span>
+          <span className="px-4 py-2 bg-purple-600 text-white rounded-full text-sm">
+            Development
+          </span>
+          <span className="px-4 py-2 bg-pink-600 text-white rounded-full text-sm">
+            Support
+          </span>
         </motion.div>
       </div>
     </motion.div>
@@ -484,27 +496,27 @@ function LogoBuildIntro({ onComplete }: { onComplete: () => void }) {
               className="mx-auto"
             />
           </motion.div>
-          
+
           {/* Animated rings around logo */}
           {[...Array(3)].map((_, i) => (
             <motion.div
               key={i}
               className="absolute inset-0 border-2 border-white rounded-full"
               initial={{ scale: 1, opacity: 0 }}
-              animate={{ 
-                scale: [1, 2, 3], 
-                opacity: [0.8, 0.4, 0] 
+              animate={{
+                scale: [1, 2, 3],
+                opacity: [0.8, 0.4, 0],
               }}
               transition={{
                 duration: 2,
                 delay: i * 0.3 + 1,
                 repeat: Infinity,
-                ease: 'easeOut'
+                ease: 'easeOut',
               }}
             />
           ))}
         </motion.div>
-        
+
         <motion.h1
           className="text-8xl font-bold text-white tracking-wide"
           initial={{ y: 50, opacity: 0 }}
@@ -516,24 +528,24 @@ function LogoBuildIntro({ onComplete }: { onComplete: () => void }) {
               key={index}
               initial={{ y: 50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              transition={{ 
-                duration: 0.5, 
+              transition={{
+                duration: 0.5,
                 delay: 1.2 + index * 0.1,
-                ease: [0.23, 1, 0.32, 1] 
+                ease: [0.23, 1, 0.32, 1],
               }}
             >
               {letter}
             </motion.span>
           ))}
         </motion.h1>
-        
+
         <motion.p
           className="text-xl text-blue-200 mt-6"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 2.5 }}
         >
-          Building tomorrow's solutions today
+          Building tomorrow&apos;s solutions today
         </motion.p>
       </div>
     </motion.div>
@@ -617,7 +629,7 @@ export default function IntroExamples() {
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {introExamples.map((example) => (
+          {introExamples.map(example => (
             <motion.div
               key={example.id}
               className="bg-white rounded-lg shadow-lg p-6 cursor-pointer hover:shadow-xl transition-shadow"
@@ -628,9 +640,7 @@ export default function IntroExamples() {
               <h3 className="text-xl font-semibold mb-3 text-gray-900">
                 {example.title}
               </h3>
-              <p className="text-gray-600 text-sm">
-                {example.description}
-              </p>
+              <p className="text-gray-600 text-sm">{example.description}</p>
               <div className="mt-4 flex justify-center">
                 <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-blue-500 rounded-lg flex items-center justify-center">
                   <span className="text-white font-bold text-sm">▶</span>
@@ -643,12 +653,24 @@ export default function IntroExamples() {
         {/* Add CSS for glitch animation */}
         <style jsx global>{`
           @keyframes glitch {
-            0% { transform: translate(0); }
-            20% { transform: translate(-2px, 2px); }
-            40% { transform: translate(-2px, -2px); }
-            60% { transform: translate(2px, 2px); }
-            80% { transform: translate(2px, -2px); }
-            100% { transform: translate(0); }
+            0% {
+              transform: translate(0);
+            }
+            20% {
+              transform: translate(-2px, 2px);
+            }
+            40% {
+              transform: translate(-2px, -2px);
+            }
+            60% {
+              transform: translate(2px, 2px);
+            }
+            80% {
+              transform: translate(2px, -2px);
+            }
+            100% {
+              transform: translate(0);
+            }
           }
         `}</style>
       </div>
