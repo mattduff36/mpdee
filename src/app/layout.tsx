@@ -13,19 +13,19 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://mpdee.co.uk'),
-  title: 'MPDEE - Creative, Development & Support Services',
+  title: 'MPDEE - Find Your Perfect Service | Creative • Development • Support',
   description:
-    'Professional audio production, web development, and IT support services. Expert solutions for creative projects, custom applications, and technical support across the UK.',
+    'Choose from three specialized MPDEE services: Professional audio production, custom web development, or expert IT support. Find the right solution for your needs across the UK.',
   keywords: [
+    'MPDEE services',
+    'professional services UK',
+    'creative development support services',
+    'service discovery',
     'audio production',
     'web development',
     'IT support',
-    'creative services',
-    'professional services',
-    'UK',
-    'radio commercials',
-    'custom applications',
-    'remote support',
+    'choose right service',
+    'specialized services',
     'MPDEE',
   ],
   authors: [{ name: 'MPDEE', url: 'https://mpdee.co.uk' }],
@@ -46,9 +46,10 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_GB',
     url: 'https://mpdee.co.uk',
-    title: 'MPDEE - Creative, Development & Support Services',
+    title:
+      'MPDEE - Find Your Perfect Service | Creative • Development • Support',
     description:
-      'Professional audio production, web development, and IT support services across the UK.',
+      'Choose from three specialized MPDEE services: Find the right solution for your creative, development, or support needs across the UK.',
     siteName: 'MPDEE',
     images: [
       {
@@ -61,14 +62,37 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'MPDEE - Creative, Development & Support Services',
+    title:
+      'MPDEE - Find Your Perfect Service | Creative • Development • Support',
     description:
-      'Professional audio production, web development, and IT support services across the UK.',
+      'Choose from three specialized MPDEE services: Find the right solution for your creative, development, or support needs across the UK.',
     images: ['/images/logo-trans.png'],
   },
   alternates: {
     canonical: 'https://mpdee.co.uk',
   },
+  icons: {
+    icon: [
+      { url: '/favicon/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon/favicon.ico' },
+    ],
+    apple: [
+      {
+        url: '/favicon/apple-touch-icon.png',
+        sizes: '180x180',
+        type: 'image/png',
+      },
+    ],
+    other: [
+      {
+        rel: 'mask-icon',
+        url: '/favicon/safari-pinned-tab.svg',
+        color: '#5bbad5',
+      },
+    ],
+  },
+  manifest: '/favicon/site.webmanifest',
 };
 
 export const viewport: Viewport = {
@@ -109,7 +133,25 @@ export default function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-FNQX2LJQQE');
+            gtag('config', 'G-FNQX2LJQQE', {
+              linker: {
+                domains: ['mpdee.co.uk', 'creative.mpdee.co.uk', 'development.mpdee.co.uk', 'support.mpdee.co.uk']
+              },
+              custom_map: {
+                'custom_parameter_1': 'service_referral'
+              }
+            });
+            
+            // Track service referrals
+            function trackServiceReferral(service) {
+              gtag('event', 'service_referral', {
+                'service_type': service,
+                'source_page': 'hub'
+              });
+            }
+            
+            // Make function globally available
+            window.trackServiceReferral = trackServiceReferral;
           `}
         </Script>
 

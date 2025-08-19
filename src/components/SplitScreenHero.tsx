@@ -2,6 +2,14 @@
 
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
+
+// Global function declaration for analytics tracking
+declare global {
+  interface Window {
+    trackServiceReferral?: (service: string) => void;
+  }
+}
 
 interface ServiceArea {
   title: string;
@@ -18,7 +26,7 @@ const serviceAreas: ServiceArea[] = [
     title: 'Creative',
     description: 'Audio Production Services',
     url: 'https://creative.mpdee.co.uk/',
-    icon: '🎵',
+    icon: '/images/MPDEE-Creative-logo.png',
     bgGradient: 'creative-authentic',
     textColor: 'text-gray-900',
     features: [
@@ -32,7 +40,7 @@ const serviceAreas: ServiceArea[] = [
     title: 'Development',
     description: 'Web Design & Development',
     url: 'https://development.mpdee.co.uk/',
-    icon: '💻',
+    icon: '/images/MPDEE-Development-logo-trans.png',
     bgGradient: 'development-authentic',
     textColor: 'text-white',
     features: [
@@ -46,7 +54,7 @@ const serviceAreas: ServiceArea[] = [
     title: 'Support',
     description: 'IT Support Services',
     url: 'https://support.mpdee.co.uk/',
-    icon: '🛠️',
+    icon: '/images/MPDEE-Support-logo.png',
     bgGradient: 'support-authentic',
     textColor: 'text-gray-900',
     features: [
@@ -190,10 +198,26 @@ export default function SplitScreenHero() {
                 setHoveredPanel(null);
               }
             }}
-            onClick={() => window.open(area.url, '_blank')}
+            onClick={() => {
+              // Track service referral
+              if (
+                typeof window !== 'undefined' &&
+                window.trackServiceReferral
+              ) {
+                window.trackServiceReferral(area.title.toLowerCase());
+              }
+              window.open(area.url, '_blank');
+            }}
             onKeyDown={e => {
               if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
+                // Track service referral
+                if (
+                  typeof window !== 'undefined' &&
+                  window.trackServiceReferral
+                ) {
+                  window.trackServiceReferral(area.title.toLowerCase());
+                }
                 window.open(area.url, '_blank');
               }
             }}
@@ -221,7 +245,7 @@ export default function SplitScreenHero() {
               <div className="text-center">
                 {/* Icon with smooth scaling */}
                 <motion.div
-                  className="mb-2 lg:mb-6"
+                  className="mb-2 lg:mb-6 flex justify-center items-center"
                   animate={{
                     scale:
                       hoveredPanel !== null &&
@@ -233,12 +257,17 @@ export default function SplitScreenHero() {
                   }}
                   transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
                   style={{
-                    fontSize: 'clamp(2rem, 8vh, 4rem)',
-                    lineHeight: 1,
                     willChange: 'transform',
                   }}
                 >
-                  {area.icon}
+                  <Image
+                    src={area.icon}
+                    alt={`${area.title} logo`}
+                    width={120}
+                    height={120}
+                    className="w-auto h-auto max-w-[80px] max-h-[80px] md:max-w-[120px] md:max-h-[120px] object-contain"
+                    priority={index < 2}
+                  />
                 </motion.div>
 
                 {/* Title with unified scaling */}

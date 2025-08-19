@@ -1,28 +1,12 @@
+import { generateStructuredData } from '@/shared/seo-utils';
+
 export default function StructuredData() {
   const structuredData = {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: 'MPDEE',
-    description:
-      'Professional audio production, web development, and IT support services across the UK.',
-    url: 'https://mpdee.co.uk',
-    logo: 'https://mpdee.co.uk/images/logo-trans.png',
-    contactPoint: [
-      {
-        '@type': 'ContactPoint',
-        contactType: 'customer service',
-        availableLanguage: ['English'],
-        areaServed: 'GB',
-      },
-    ],
-    sameAs: [
-      'https://creative.mpdee.co.uk',
-      'https://development.mpdee.co.uk',
-      'https://support.mpdee.co.uk',
-    ],
+    ...generateStructuredData('hub'),
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
-      name: 'MPDEE Services',
+      name: 'MPDEE Service Portfolio',
+      numberOfItems: 3,
       itemListElement: [
         {
           '@type': 'Offer',
@@ -31,6 +15,7 @@ export default function StructuredData() {
             name: 'Audio Production Services',
             description:
               'Professional audio production including radio commercials, audio imaging, event recording, and sound design.',
+            url: 'https://creative.mpdee.co.uk',
             provider: {
               '@type': 'Organization',
               name: 'MPDEE Creative',
@@ -44,6 +29,7 @@ export default function StructuredData() {
             name: 'Web Development Services',
             description:
               'Custom web development, applications, e-commerce solutions, and digital platforms.',
+            url: 'https://development.mpdee.co.uk',
             provider: {
               '@type': 'Organization',
               name: 'MPDEE Development',
@@ -57,6 +43,7 @@ export default function StructuredData() {
             name: 'IT Support Services',
             description:
               'Remote support, on-site support, hardware services, and software solutions.',
+            url: 'https://support.mpdee.co.uk',
             provider: {
               '@type': 'Organization',
               name: 'MPDEE Support',
@@ -64,11 +51,6 @@ export default function StructuredData() {
           },
         },
       ],
-    },
-    address: {
-      '@type': 'PostalAddress',
-      addressCountry: 'GB',
-      addressRegion: 'United Kingdom',
     },
   };
 

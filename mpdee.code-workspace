@@ -1,11 +1,20 @@
 {
   "folders": [
     {
-      "path": ".",
+      "path": "."
     },
     {
-      "path": "../_Cursor-info",
+      "path": "../_Cursor-info"
     },
+    {
+      "path": "../mpdee-creative"
+    },
+    {
+      "path": "../mpdee-development"
+    },
+    {
+      "path": "../mpdee-support"
+    }
   ],
   "settings": {
     "workbench.colorCustomizations": {

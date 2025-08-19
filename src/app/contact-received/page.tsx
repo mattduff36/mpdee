@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: 'Thank You - MPDEE Contact Received',
@@ -13,31 +14,42 @@ export default function ContactReceivedPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center p-4">
       <div className="max-w-2xl mx-auto text-center">
-        {/* Success Icon */}
+        {/* MPDEE Logo */}
         <div className="mb-8">
-          <div className="w-24 h-24 mx-auto bg-green-500 rounded-full flex items-center justify-center mb-6">
-            <svg
-              className="w-12 h-12 text-white"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M5 13l4 4L19 7"
-              />
-            </svg>
-          </div>
+          <Image
+            src="/images/MPDEE-logo-trans.png"
+            alt="MPDEE Logo"
+            width={120}
+            height={120}
+            className="mx-auto mb-6"
+            priority
+            quality={90}
+          />
         </div>
 
         {/* Main Content */}
         <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Thank You!
-          </h1>
+          <div className="flex items-center justify-center gap-4 mb-6">
+            <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
+              <svg
+                className="w-6 h-6 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M5 13l4 4L19 7"
+                />
+              </svg>
+            </div>
+            <h1 className="text-4xl md:text-5xl font-bold text-white">
+              Thank You!
+            </h1>
+          </div>
 
           <p className="text-xl text-gray-200 mb-8 leading-relaxed">
             We have successfully received your message and appreciate you
