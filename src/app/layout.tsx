@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/react';
+import { GoogleAnalytics } from '@next/third-parties/google';
+import Script from 'next/script';
 import './globals.css';
 
 const inter = Inter({
@@ -96,8 +98,24 @@ export default function RootLayout({
         />
       </head>
       <body className={inter.className}>
+        {/* Google Ads Tracking */}
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-FNQX2LJQQE"
+          strategy="afterInteractive"
+        />
+        <Script id="google-ads" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-FNQX2LJQQE');
+          `}
+        </Script>
+
         {children}
         <Analytics />
+        <GoogleAnalytics gaId="G-FNQX2LJQQE" />
       </body>
     </html>
   );
