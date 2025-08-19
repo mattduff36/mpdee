@@ -252,16 +252,40 @@ body {
   }
 }
 
-/* Extra compact sizing for very small mobile screens */
-@media (max-height: 800px) {
+/* Mobile-specific compact sizing for very small screens */
+@media (max-height: 800px) and (max-width: 768px) {
   .viewport-responsive {
     height: 100vh;
     overflow: hidden;
   }
   
-  /* Force even smaller sizes on very small screens */
+  /* Force compact sizing only on mobile devices with small height */
   .viewport-responsive .motion-div {
     font-size: clamp(0.75rem, 3vh, 1.5rem) !important;
+  }
+  
+  /* Reduce icon sizes on small mobile screens */
+  .viewport-responsive .motion-div:first-child {
+    font-size: clamp(1.25rem, 5vh, 3rem) !important;
+    margin-bottom: 0.25rem !important;
+  }
+  
+  /* Reduce title sizes on small mobile screens */
+  .viewport-responsive h2 {
+    font-size: clamp(0.875rem, 2.5vh, 1.5rem) !important;
+    margin-bottom: 0.125rem !important;
+    margin-top: 0.125rem !important;
+  }
+  
+  /* Reduce description sizes on small mobile screens */
+  .viewport-responsive p {
+    font-size: clamp(0.625rem, 1.5vh, 1rem) !important;
+    margin-bottom: 0.25rem !important;
+  }
+  
+  /* Reduce padding on small mobile screens */
+  .viewport-responsive > div {
+    padding: clamp(0.125rem, 0.75vh, 1rem) clamp(0.25rem, 1vw, 2rem) !important;
   }
 }
 
