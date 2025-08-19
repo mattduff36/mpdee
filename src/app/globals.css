@@ -5,6 +5,7 @@
 /* Performance optimized base styles */
 html {
   scroll-behavior: smooth;
+  --vh: 1vh; /* Fallback for browsers that don't support custom properties */
 }
 
 body {
@@ -240,22 +241,22 @@ body {
 
 /* Viewport-based responsive sizing */
 .viewport-responsive {
-  min-height: 100vh;
-  height: 100vh;
+  min-height: 100dvh;
+  height: 100dvh;
   overflow: hidden;
 }
 
 /* Ensure proper viewport sizing on mobile */
 @media (max-height: 700px) {
   .viewport-responsive {
-    height: 100vh;
+    height: 100dvh;
   }
 }
 
 /* Mobile-specific compact sizing for very small screens */
 @media (max-height: 800px) and (max-width: 768px) {
   .viewport-responsive {
-    height: 100vh;
+    height: 100dvh;
     overflow: hidden;
   }
   
@@ -286,6 +287,62 @@ body {
   /* Reduce padding on small mobile screens */
   .viewport-responsive > div {
     padding: clamp(0.125rem, 0.75vh, 1rem) clamp(0.25rem, 1vw, 2rem) !important;
+  }
+}
+
+/* iPhone-specific fixes for Chrome browser */
+@media (max-width: 430px) and (max-height: 932px) {
+  .viewport-responsive {
+    height: 100dvh !important;
+    min-height: 100dvh !important;
+    max-height: 100dvh !important;
+  }
+  
+  .viewport-responsive > div {
+    height: 33.333dvh !important;
+    min-height: 33.333dvh !important;
+    max-height: 33.333dvh !important;
+    flex: 1 !important;
+  }
+  
+  /* Disable all animations on mobile (but allow demo animations) */
+  .viewport-responsive *:not([data-demo-mode="true"]) {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Comprehensive mobile viewport fix */
+@media (max-width: 768px) {
+  html, body {
+    height: calc(var(--vh, 1vh) * 100) !important;
+    overflow: hidden !important;
+  }
+  
+  .viewport-responsive {
+    height: calc(var(--vh, 1vh) * 100) !important;
+    min-height: calc(var(--vh, 1vh) * 100) !important;
+    max-height: calc(var(--vh, 1vh) * 100) !important;
+    overflow: hidden !important;
+  }
+  
+  /* Force each section to be exactly 1/3 of the dynamic viewport */
+  .viewport-responsive > div {
+    height: calc(var(--vh, 1vh) * 33.333) !important;
+    min-height: calc(var(--vh, 1vh) * 33.333) !important;
+    max-height: calc(var(--vh, 1vh) * 33.333) !important;
+    flex: 1 !important;
+    overflow: hidden !important;
+  }
+  
+  /* Ensure content fits within each section */
+  .viewport-responsive > div > div {
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 0.5rem !important;
   }
 }
 

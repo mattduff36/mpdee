@@ -61,10 +61,76 @@ const serviceAreas: ServiceArea[] = [
 export default function SplitScreenHero() {
   const [hoveredPanel, setHoveredPanel] = useState<number | null>(null);
   const [mounted, setMounted] = useState(false);
+  const [viewportHeight, setViewportHeight] = useState('100dvh');
+  const [isDemoMode, setIsDemoMode] = useState(false);
 
   useEffect(() => {
     setMounted(true);
+
+    // Set initial viewport height
+    const setHeight = () => {
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+      setViewportHeight(`${window.innerHeight}px`);
+    };
+
+    setHeight();
+
+    // Update on resize and orientation change
+    window.addEventListener('resize', setHeight);
+    window.addEventListener('orientationchange', setHeight);
+
+    return () => {
+      window.removeEventListener('resize', setHeight);
+      window.removeEventListener('orientationchange', setHeight);
+    };
   }, []);
+
+  // Demo animation for mobile - cycles through sections
+  useEffect(() => {
+    if (!mounted) return;
+
+    // Only run demo on mobile devices
+    const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+    if (!isMobile) return;
+
+    // Start demo as intro animation begins to fade out (around 2.5 seconds)
+    const introDelay = 2500;
+    const demoDelay = introDelay + 500; // 0.5 seconds after intro starts fading
+
+    const demoTimer = setTimeout(() => {
+      setIsDemoMode(true);
+
+      // Cycle through each section for 0.5 seconds each
+      const sections = [0, 1, 2];
+      let currentIndex = 0;
+
+      const cycleSections = () => {
+        if (currentIndex < sections.length) {
+          setHoveredPanel(sections[currentIndex]);
+          currentIndex++;
+
+          setTimeout(() => {
+            if (currentIndex >= sections.length) {
+              // Demo complete, reset
+              setHoveredPanel(null);
+              setIsDemoMode(false);
+            } else {
+              cycleSections();
+            }
+          }, 500); // 0.5 seconds per section
+        }
+      };
+
+      cycleSections();
+    }, demoDelay);
+
+    return () => {
+      clearTimeout(demoTimer);
+      setIsDemoMode(false);
+      setHoveredPanel(null);
+    };
+  }, [mounted]);
 
   if (!mounted) {
     return (
@@ -73,7 +139,16 @@ export default function SplitScreenHero() {
   }
 
   return (
-    <div className="viewport-responsive flex flex-col">
+    <div
+      className="viewport-responsive flex flex-col"
+      style={{
+        height: viewportHeight,
+        minHeight: viewportHeight,
+        maxHeight: viewportHeight,
+        overflow: 'hidden',
+      }}
+      data-demo-mode={isDemoMode ? 'true' : 'false'}
+    >
       {/* Skip to main content link for accessibility */}
       <a
         href="#main-content"
@@ -97,8 +172,24 @@ export default function SplitScreenHero() {
               flex: hoveredPanel === index ? 1.5 : 1,
             }}
             transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
-            onHoverStart={() => setHoveredPanel(index)}
-            onHoverEnd={() => setHoveredPanel(null)}
+            onHoverStart={() => {
+              // Only enable hover on desktop/larger screens or during demo mode
+              if (
+                typeof window !== 'undefined' &&
+                (window.innerWidth > 768 || isDemoMode)
+              ) {
+                setHoveredPanel(index);
+              }
+            }}
+            onHoverEnd={() => {
+              // Only enable hover on desktop/larger screens or during demo mode
+              if (
+                typeof window !== 'undefined' &&
+                (window.innerWidth > 768 || isDemoMode)
+              ) {
+                setHoveredPanel(null);
+              }
+            }}
             onClick={() => window.open(area.url, '_blank')}
             onKeyDown={e => {
               if (e.key === 'Enter' || e.key === ' ') {
@@ -118,7 +209,12 @@ export default function SplitScreenHero() {
               }}
               animate={{
                 scale:
-                  hoveredPanel !== null && hoveredPanel !== index ? 0.96 : 1,
+                  hoveredPanel !== null &&
+                  hoveredPanel !== index &&
+                  typeof window !== 'undefined' &&
+                  (window.innerWidth > 768 || isDemoMode)
+                    ? 0.96
+                    : 1,
               }}
               transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
             >
@@ -128,7 +224,12 @@ export default function SplitScreenHero() {
                   className="mb-2 lg:mb-6"
                   animate={{
                     scale:
-                      hoveredPanel !== null && hoveredPanel !== index ? 0.8 : 1,
+                      hoveredPanel !== null &&
+                      hoveredPanel !== index &&
+                      typeof window !== 'undefined' &&
+                      (window.innerWidth > 768 || isDemoMode)
+                        ? 0.8
+                        : 1,
                   }}
                   transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
                   style={{
@@ -167,9 +268,14 @@ export default function SplitScreenHero() {
                   }}
                   animate={{
                     scale:
-                      hoveredPanel !== null && hoveredPanel !== index
+                      hoveredPanel !== null &&
+                      hoveredPanel !== index &&
+                      typeof window !== 'undefined' &&
+                      (window.innerWidth > 768 || isDemoMode)
                         ? 0.75
-                        : hoveredPanel === index
+                        : hoveredPanel === index &&
+                            typeof window !== 'undefined' &&
+                            (window.innerWidth > 768 || isDemoMode)
                           ? 1.2
                           : 1,
                   }}
@@ -212,9 +318,19 @@ export default function SplitScreenHero() {
                   }}
                   animate={{
                     opacity:
-                      hoveredPanel !== null && hoveredPanel !== index ? 0.7 : 1,
+                      hoveredPanel !== null &&
+                      hoveredPanel !== index &&
+                      typeof window !== 'undefined' &&
+                      (window.innerWidth > 768 || isDemoMode)
+                        ? 0.7
+                        : 1,
                     scale:
-                      hoveredPanel !== null && hoveredPanel !== index ? 0.9 : 1,
+                      hoveredPanel !== null &&
+                      hoveredPanel !== index &&
+                      typeof window !== 'undefined' &&
+                      (window.innerWidth > 768 || isDemoMode)
+                        ? 0.9
+                        : 1,
                   }}
                   transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
                 >
@@ -227,9 +343,19 @@ export default function SplitScreenHero() {
                   style={{ willChange: 'transform, opacity' }}
                   animate={{
                     opacity:
-                      hoveredPanel !== null && hoveredPanel !== index ? 0.6 : 1,
+                      hoveredPanel !== null &&
+                      hoveredPanel !== index &&
+                      typeof window !== 'undefined' &&
+                      (window.innerWidth > 768 || isDemoMode)
+                        ? 0.6
+                        : 1,
                     scale:
-                      hoveredPanel !== null && hoveredPanel !== index ? 0.9 : 1,
+                      hoveredPanel !== null &&
+                      hoveredPanel !== index &&
+                      typeof window !== 'undefined' &&
+                      (window.innerWidth > 768 || isDemoMode)
+                        ? 0.9
+                        : 1,
                   }}
                   transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
                 >
@@ -251,7 +377,12 @@ export default function SplitScreenHero() {
                   style={{ willChange: 'transform' }}
                   animate={{
                     scale:
-                      hoveredPanel !== null && hoveredPanel !== index ? 0.9 : 1,
+                      hoveredPanel !== null &&
+                      hoveredPanel !== index &&
+                      typeof window !== 'undefined' &&
+                      (window.innerWidth > 768 || isDemoMode)
+                        ? 0.9
+                        : 1,
                   }}
                   transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
                 >
