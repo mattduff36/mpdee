@@ -54,13 +54,13 @@ function Intro3DRotate({ onComplete }: { onComplete: () => void }) {
           animate={{ rotateY: 0, opacity: 1 }}
           transition={{ duration: 1.5, delay: 1, ease: [0.23, 1, 0.32, 1] }}
         >
-          <span className="px-4 py-2 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-full text-sm">
+          <span className="px-4 py-2 bg-blue-600 text-white rounded-full text-sm">
             Creative
           </span>
-          <span className="px-4 py-2 bg-gradient-to-r from-yellow-400 to-orange-500 text-white rounded-full text-sm">
+          <span className="px-4 py-2 bg-orange-500 text-white rounded-full text-sm">
             Development
           </span>
-          <span className="px-4 py-2 bg-gradient-to-r from-red-500 to-blue-600 text-white rounded-full text-sm">
+          <span className="px-4 py-2 bg-red-500 text-white rounded-full text-sm">
             Support
           </span>
         </motion.div>
