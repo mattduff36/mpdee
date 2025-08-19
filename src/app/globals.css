@@ -238,6 +238,20 @@ body {
   will-change: transform;
 }
 
+/* Viewport-based responsive sizing */
+.viewport-responsive {
+  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Ensure proper viewport sizing on mobile */
+@media (max-height: 700px) {
+  .viewport-responsive {
+    height: 100vh;
+  }
+}
+
 /* Prevent wobble in motion elements */
 .framer-motion-title {
   transform-style: preserve-3d !important;

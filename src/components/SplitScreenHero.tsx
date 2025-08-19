@@ -73,7 +73,7 @@ export default function SplitScreenHero() {
   }
 
   return (
-    <div className="h-screen flex flex-col overflow-hidden">
+    <div className="viewport-responsive flex flex-col">
       {/* Skip to main content link for accessibility */}
       <a
         href="#main-content"
@@ -112,7 +112,10 @@ export default function SplitScreenHero() {
           >
             {/* Content */}
             <motion.div
-              className={`relative z-10 h-full p-2 py-3 lg:p-8 lg:py-12 flex flex-col justify-center items-center ${area.textColor}`}
+              className={`relative z-10 h-full flex flex-col justify-center items-center ${area.textColor}`}
+              style={{
+                padding: 'clamp(0.5rem, 2vh, 2rem) clamp(0.25rem, 1vw, 2rem)',
+              }}
               animate={{
                 scale:
                   hoveredPanel !== null && hoveredPanel !== index ? 0.96 : 1,
@@ -122,13 +125,14 @@ export default function SplitScreenHero() {
               <div className="text-center">
                 {/* Icon with smooth scaling */}
                 <motion.div
-                  className="text-4xl lg:text-6xl mb-2 lg:mb-6"
+                  className="mb-2 lg:mb-6"
                   animate={{
                     scale:
                       hoveredPanel !== null && hoveredPanel !== index ? 0.8 : 1,
                   }}
                   transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
                   style={{
+                    fontSize: 'clamp(2rem, 8vh, 4rem)',
                     lineHeight: 1,
                     willChange: 'transform',
                   }}
@@ -138,13 +142,29 @@ export default function SplitScreenHero() {
 
                 {/* Title with unified scaling */}
                 <motion.h2
-                  className={`font-bold mb-1 mt-1 lg:mb-6 lg:mt-4 framer-motion-title text-lg lg:text-3xl ${
+                  className={`font-bold framer-motion-title ${
                     area.title === 'Creative'
                       ? 'text-gray-900'
                       : area.title === 'Development'
                         ? 'text-white'
                         : 'text-gray-900'
                   }`}
+                  style={{
+                    fontSize: 'clamp(1.25rem, 4vh, 2rem)',
+                    lineHeight: 1.1,
+                    marginBottom: 'clamp(0.25rem, 1vh, 1rem)',
+                    marginTop: 'clamp(0.25rem, 1vh, 1rem)',
+                    whiteSpace: 'nowrap',
+                    overflow: 'visible',
+                    textOverflow: 'clip',
+                    willChange: 'transform',
+                    backfaceVisibility: 'hidden',
+                    WebkitBackfaceVisibility: 'hidden',
+                    WebkitFontSmoothing: 'antialiased',
+                    MozOsxFontSmoothing: 'grayscale',
+                    textRendering: 'optimizeLegibility',
+                    transition: 'none',
+                  }}
                   style={{
                     lineHeight: 1.1,
                     whiteSpace: 'nowrap',
@@ -191,14 +211,16 @@ export default function SplitScreenHero() {
 
                 {/* Description with opacity and scale */}
                 <motion.p
-                  className={`mb-2 lg:mb-8 max-w-md mx-auto leading-relaxed ${
+                  className={`max-w-md mx-auto leading-relaxed ${
                     area.title === 'Creative'
-                      ? 'text-sm lg:text-lg text-gray-800'
+                      ? 'text-gray-800'
                       : area.title === 'Development'
-                        ? 'text-sm lg:text-lg text-white'
-                        : 'text-sm lg:text-lg text-gray-900'
+                        ? 'text-white'
+                        : 'text-gray-900'
                   }`}
                   style={{
+                    fontSize: 'clamp(0.875rem, 2.5vh, 1.125rem)',
+                    marginBottom: 'clamp(0.5rem, 2vh, 2rem)',
                     willChange: 'transform, opacity',
                   }}
                   animate={{
