@@ -114,7 +114,8 @@ export default function SplitScreenHero() {
             <motion.div
               className={`relative z-10 h-full flex flex-col justify-center items-center ${area.textColor}`}
               style={{
-                padding: 'clamp(0.5rem, 2vh, 2rem) clamp(0.25rem, 1vw, 2rem)',
+                padding:
+                  'clamp(0.25rem, 1.5vh, 2rem) clamp(0.25rem, 1vw, 2rem)',
               }}
               animate={{
                 scale:
@@ -125,14 +126,14 @@ export default function SplitScreenHero() {
               <div className="text-center">
                 {/* Icon with smooth scaling */}
                 <motion.div
-                  className="mb-2 lg:mb-6"
+                  className="mb-1 lg:mb-6"
                   animate={{
                     scale:
                       hoveredPanel !== null && hoveredPanel !== index ? 0.8 : 1,
                   }}
                   transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
                   style={{
-                    fontSize: 'clamp(2rem, 8vh, 4rem)',
+                    fontSize: 'clamp(1.5rem, 6vh, 4rem)',
                     lineHeight: 1,
                     willChange: 'transform',
                   }}
@@ -150,10 +151,10 @@ export default function SplitScreenHero() {
                         : 'text-gray-900'
                   }`}
                   style={{
-                    fontSize: 'clamp(1.25rem, 4vh, 2rem)',
+                    fontSize: 'clamp(1.125rem, 3.5vh, 2rem)',
                     lineHeight: 1.1,
-                    marginBottom: 'clamp(0.25rem, 1vh, 1rem)',
-                    marginTop: 'clamp(0.25rem, 1vh, 1rem)',
+                    marginBottom: 'clamp(0.125rem, 0.5vh, 1rem)',
+                    marginTop: 'clamp(0.125rem, 0.5vh, 1rem)',
                     whiteSpace: 'nowrap',
                     overflow: 'visible',
                     textOverflow: 'clip',
@@ -206,8 +207,8 @@ export default function SplitScreenHero() {
                         : 'text-gray-900'
                   }`}
                   style={{
-                    fontSize: 'clamp(0.875rem, 2.5vh, 1.125rem)',
-                    marginBottom: 'clamp(0.5rem, 2vh, 2rem)',
+                    fontSize: 'clamp(0.75rem, 2vh, 1.125rem)',
+                    marginBottom: 'clamp(0.25rem, 1vh, 2rem)',
                     willChange: 'transform, opacity',
                   }}
                   animate={{
