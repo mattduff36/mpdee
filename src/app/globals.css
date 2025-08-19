@@ -252,6 +252,19 @@ body {
   }
 }
 
+/* Extra compact sizing for very small mobile screens */
+@media (max-height: 800px) {
+  .viewport-responsive {
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  /* Force even smaller sizes on very small screens */
+  .viewport-responsive .motion-div {
+    font-size: clamp(0.75rem, 3vh, 1.5rem) !important;
+  }
+}
+
 /* Prevent wobble in motion elements */
 .framer-motion-title {
   transform-style: preserve-3d !important;
