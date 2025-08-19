@@ -165,19 +165,6 @@ export default function SplitScreenHero() {
                     textRendering: 'optimizeLegibility',
                     transition: 'none',
                   }}
-                  style={{
-                    lineHeight: 1.1,
-                    whiteSpace: 'nowrap',
-                    overflow: 'visible',
-                    textOverflow: 'clip',
-                    willChange: 'transform',
-                    backfaceVisibility: 'hidden',
-                    WebkitBackfaceVisibility: 'hidden',
-                    WebkitFontSmoothing: 'antialiased',
-                    MozOsxFontSmoothing: 'grayscale',
-                    textRendering: 'optimizeLegibility',
-                    transition: 'none',
-                  }}
                   animate={{
                     scale:
                       hoveredPanel !== null && hoveredPanel !== index
