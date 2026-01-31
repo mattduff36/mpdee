@@ -4,13 +4,6 @@ import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
-// Global function declaration for analytics tracking
-declare global {
-  interface Window {
-    trackServiceReferral?: (service: string) => void;
-  }
-}
-
 interface ServiceArea {
   title: string;
   description: string;
