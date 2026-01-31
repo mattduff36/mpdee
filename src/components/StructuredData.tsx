@@ -1,57 +1,33 @@
-import { generateStructuredData } from '@/shared/seo-utils';
+import { MPDEE_BRAND } from '@/shared/types';
 
 export default function StructuredData() {
-  const structuredData = {
-    ...generateStructuredData('hub'),
-    hasOfferCatalog: {
-      '@type': 'OfferCatalog',
-      name: 'MPDEE Service Portfolio',
-      numberOfItems: 3,
-      itemListElement: [
-        {
-          '@type': 'Offer',
-          itemOffered: {
-            '@type': 'Service',
-            name: 'Audio Production Services',
-            description:
-              'Professional audio production including radio commercials, audio imaging, event recording, and sound design.',
-            url: 'https://creative.mpdee.co.uk',
-            provider: {
-              '@type': 'Organization',
-              name: 'MPDEE Creative',
-            },
-          },
-        },
-        {
-          '@type': 'Offer',
-          itemOffered: {
-            '@type': 'Service',
-            name: 'Web Development Services',
-            description:
-              'Custom web development, applications, e-commerce solutions, and digital platforms.',
-            url: 'https://development.mpdee.co.uk',
-            provider: {
-              '@type': 'Organization',
-              name: 'MPDEE Development',
-            },
-          },
-        },
-        {
-          '@type': 'Offer',
-          itemOffered: {
-            '@type': 'Service',
-            name: 'IT Support Services',
-            description:
-              'Remote support, on-site support, hardware services, and software solutions.',
-            url: 'https://support.mpdee.co.uk',
-            provider: {
-              '@type': 'Organization',
-              name: 'MPDEE Support',
-            },
-          },
-        },
-      ],
+  // Base structured data for MPDEE organization
+  const baseData = {
+    '@context': 'https://schema.org',
+    '@type': ['Organization', 'Service'] as const,
+    name: MPDEE_BRAND.name,
+    url: `https://${MPDEE_BRAND.domain}`,
+    logo: `https://${MPDEE_BRAND.domain}/images/logo-trans.png`,
+    description:
+      'Choose from three specialized MPDEE services: Professional audio production, custom web development, or expert IT support.',
+    serviceType: 'Professional Services Hub',
+    contactPoint: [
+      {
+        '@type': 'ContactPoint',
+        contactType: 'customer service',
+        availableLanguage: ['English'],
+        areaServed: 'GB',
+      },
+    ],
+    areaServed: {
+      '@type': 'Country',
+      name: 'United Kingdom',
     },
+    sameAs: [
+      `https://${MPDEE_BRAND.services.creative.subdomain}`,
+      `https://${MPDEE_BRAND.services.development.subdomain}`,
+      `https://${MPDEE_BRAND.services.support.subdomain}`,
+    ],
   };
 
   return (
