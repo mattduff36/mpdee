@@ -16,10 +16,10 @@
     "@types/react-dom": "^19.1.6",
     "@vercel/analytics": "^1.5.0",
     "framer-motion": "^12.23.3",
-    "next": "^15.3.5",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "sharp": "^0.32.1"
+    "next": "15.5.28",
+    "react": "19.1.10",
+    "react-dom": "19.1.10",
+    "sharp": "0.35.5"
   },
   "devDependencies": {
     "@types/node": "24.0.13",
@@ -28,7 +28,7 @@
     "@typescript-eslint/parser": "^8.36.0",
     "autoprefixer": "^10.4.21",
     "eslint": "^9.30.1",
-    "eslint-config-next": "^15.3.5",
+    "eslint-config-next": "15.5.28",
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-prettier": "^5.5.1",
     "postcss": "^8.5.6",
